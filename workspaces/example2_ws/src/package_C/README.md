@@ -1,0 +1,1 @@
+*This package is intentionally empty and serves solely as an example.*
