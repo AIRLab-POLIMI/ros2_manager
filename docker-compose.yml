@@ -1,0 +1,32 @@
+services:
+  service:
+    image: ${ROS2_WS_NAME}_image
+    container_name: ${ROS2_WS_NAME}_container
+    build:
+      context: .
+      dockerfile: ./docker/ros2_workspaces/Dockerfile
+      args:
+        ROS2_DISTRO: ${ROS2_DISTRO}
+        USER_NAME: ${USER_NAME}
+        ROS2_WS_NAME: ${ROS2_WS_NAME}
+        PROJECT_NAME: ${PROJECT_NAME}
+    stdin_open: true
+    tty: true
+    restart: no
+    network_mode: host
+    environment:
+      - DISPLAY=${DISPLAY}
+      - ROS_DOMAIN_ID=${ROS2_DOMAIN_ID}
+      - ROS2_DISTRO=${ROS2_DISTRO}
+      - USER_NAME=${USER_NAME}
+      - ROS2_WS_NAME=${ROS2_WS_NAME}
+      - ROS2_WS_PATH=/home/${USER_NAME}/${PROJECT_NAME}/${ROS2_WS_NAME}
+      - RMW_IMPLEMENTATION=rmw_cyclonedds_cpp
+    volumes:
+      - /tmp/.X11-unix/:/tmp/.X11-unix/
+      - ./workspaces/${ROS2_WS_NAME}:/home/${USER_NAME}/${PROJECT_NAME}/${ROS2_WS_NAME}
+      - ./.vscode:/home/${USER_NAME}/${PROJECT_NAME}/.vscode
+    working_dir: /home/${USER_NAME}/${PROJECT_NAME}/${ROS2_WS_NAME}
+    devices:
+      - /dev/dri:/dev/dri
+    stop_grace_period: 2s

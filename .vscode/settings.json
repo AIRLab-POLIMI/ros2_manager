@@ -1,0 +1,16 @@
+{
+    "cmake.ignoreCMakeListsMissing": true,
+    "python.analysis.extraPaths": [
+        // ROS 2 Humble
+        "/opt/ros/humble/lib/python3.10/site-packages",
+        "/opt/ros/humble/local/lib/python3.10/dist-packages",
+        // ROS 2 Iron
+        "/opt/ros/iron/lib/python3.10/site-packages",
+        "/opt/ros/iron/local/lib/python3.10/dist-packages",
+        // ROS 2 Jazzy
+        "/opt/ros/jazzy/lib/python3.10/site-packages",
+        "/opt/ros/jazzy/local/lib/python3.10/dist-packages",
+        // Custom ROS 2 packages
+        //"./<your_workspace>/src/<your_package>"
+    ]
+}
