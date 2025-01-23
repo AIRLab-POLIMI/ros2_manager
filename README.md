@@ -188,8 +188,8 @@ docker compose --env-file ./workspaces/example2_ws/docker/.env -p example2 up
 
 To access a shell inside the two running containers, use:
 ```sh
-docker exec -it example1_container /bin/bash
-docker exec -it example2_container /bin/bash
+docker exec -it example1_ws_container /bin/bash
+docker exec -it example2_ws_container /bin/bash
 ```
 
 You are now ready to build your workspaces with `colcon` or perform other operations.
