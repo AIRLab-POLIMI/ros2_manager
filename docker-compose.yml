@@ -30,3 +30,11 @@ services:
     devices:
       - /dev/dri:/dev/dri
     stop_grace_period: 2s
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [gpu]
+
