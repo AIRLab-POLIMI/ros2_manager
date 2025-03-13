@@ -202,12 +202,23 @@ If a workspace’s dependencies are updated (in `docker/install_deps.sh`), rebui
 
 ## Troubleshooting
 
-### Visualizing GUI Programs
+### Displaying GUI Applications
 
-If you are unable to visualize GUI programs in your container, you may need to disable access control on the X server to allow incoming connections:
+If GUI programs fail to launch in your container, you may need to disable access control on the X server to allow incoming connections:
 ```sh
 xhost +x
 ```
+
+This is a quick fix but is not recommended for long-term use due to security risks. Consider exploring safer alternatives.
+
+### Accessing Hardware Devices
+
+If you cannot access external devices (e.g., USB devices), you can uncomment the following line in `docker-compose.yml`:
+```yaml
+privileged: true
+```
+
+This is a quick fix but is not recommended for long-term use due to security risks. Consider exploring safer alternatives.
 
 
 ## Author

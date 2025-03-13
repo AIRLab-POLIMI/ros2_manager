@@ -37,4 +37,5 @@ services:
             - driver: nvidia
               count: 1
               capabilities: [gpu]
-
+    # Quick (but not secure) way to access hardware devices - disabled by default
+    # privileged: true
