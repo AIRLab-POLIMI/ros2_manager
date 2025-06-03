@@ -15,13 +15,14 @@ services:
     restart: no
     network_mode: host
     environment:
-      - DISPLAY=${DISPLAY}
-      - ROS_DOMAIN_ID=${ROS2_DOMAIN_ID}
-      - ROS2_DISTRO=${ROS2_DISTRO}
-      - USER_NAME=${USER_NAME}
-      - ROS2_WS_NAME=${ROS2_WS_NAME}
-      - ROS2_WS_PATH=/home/${USER_NAME}/${PROJECT_NAME}/${ROS2_WS_NAME}
-      - RMW_IMPLEMENTATION=rmw_cyclonedds_cpp
+      DISPLAY: ${DISPLAY}
+      ROS_DOMAIN_ID: ${ROS2_DOMAIN_ID}
+      ROS2_DISTRO: ${ROS2_DISTRO}
+      USER_NAME: ${USER_NAME}
+      ROS2_WS_NAME: ${ROS2_WS_NAME}
+      ROS2_WS_PATH: /home/${USER_NAME}/${PROJECT_NAME}/${ROS2_WS_NAME}
+      RMW_IMPLEMENTATION: rmw_cyclonedds_cpp
+      NVIDIA_DRIVER_CAPABILITIES: "all"
     volumes:
       - /tmp/.X11-unix/:/tmp/.X11-unix/
       - ./workspaces/${ROS2_WS_NAME}:/home/${USER_NAME}/${PROJECT_NAME}/${ROS2_WS_NAME}
@@ -35,7 +36,7 @@ services:
         reservations:
           devices:
             - driver: nvidia
-              count: 1
-              capabilities: [gpu]
+              count: all
+              capabilities: [ gpu ]
     # Quick (but not secure) way to access hardware devices - disabled by default
     # privileged: true
