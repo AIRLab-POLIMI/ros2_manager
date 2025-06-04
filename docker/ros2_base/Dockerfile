@@ -59,5 +59,8 @@ USER $USER_NAME
 # Start the container in the home directory of the non-root user
 WORKDIR /home/$USER_NAME
 
+# Execute the entrypoint script to set up the environment
+RUN /usr/local/bin/ros2_base_entrypoint.sh
+
 # Set the ENTRYPOINT
 ENTRYPOINT ["/usr/local/bin/ros2_base_entrypoint.sh"]

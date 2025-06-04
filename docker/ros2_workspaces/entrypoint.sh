@@ -5,13 +5,13 @@
 set -e
 
 # One-time commands
-if [ ! -f /tmp/ros2_workspaces/initialized ]; then
+if [ ! -f /tmp/workspace_initialized ]; then
     
     # Source ROS 2 workspace
     echo "source ${ROS2_WS_PATH}/install/setup.bash" >> /home/${USER_NAME}/.bashrc
     
     # Create a flag file to indicate that this script has been already run
-    touch /tmp/ros2_workspaces/initialized
+    touch /tmp/workspace_initialized
 
 fi
 

@@ -5,7 +5,7 @@
 set -e
 
 # One-time commands
-if [ ! -f /tmp/ros2_base/initialized ]; then
+if [ ! -f /tmp/base_initialized ]; then
 
     # Source ROS 2 installation
     echo "source /opt/ros/${ROS2_DISTRO}/local_setup.bash" >> /home/${USER_NAME}/.bashrc
@@ -18,7 +18,7 @@ if [ ! -f /tmp/ros2_base/initialized ]; then
     echo "export __GLX_VENDOR_LIBRARY_NAME=nvidia" >> /home/${USER_NAME}/.bashrc
 
     # Create a flag file to indicate that this script has been already run
-    touch /tmp/ros2_base/initialized
+    touch /tmp/base_initialized
 
 fi
 
